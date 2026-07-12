@@ -4,14 +4,14 @@ A simple web application built as part of the TripleTen AI-assisted Software Eng
 
 ## Features
 
-- Interactive Flashcards
-- Responsive design
-- Easy-to-use interface
+-Interactive Flashcards
+-Responsive design
+-Easy-to-use interface
 
 ## Technologies Used
 
-- HTML
-- CSS
-- JavaScript
-- Git
-- Github
+-HTML
+-CSS
+-JavaScript
+-Git
+-Github
