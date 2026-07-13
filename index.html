@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Felix Pasillas" />
+    <meta name="description" content="Flashcards to help students study" />
+    <meta name="keywords" content="study cards, quiz cards" />
+    <title>FlashMind AI</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="vendor/normalize.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="page">
+    <header class="header">
+      <h1 class="header__title">
+        <a href="#home" class="header__link">Flash Cards</a>
+      </h1>
+      <div>
+        <nav class="nav">
+          <ul class="nav__links">
+            <li><a class="nav__link" href="#">About</a></li>
+            <li><a class="nav__link" href="#home">My Decks</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page__main-content">
+      <section id="home" class="decks">
+        <h2 class="decks__title">My Decks</h2>
+
+        <ul class="decks__list">
+          <template id="deck-template">
+            <li class="deck deck_color_green">
+              <a class="deck__link" href="#"></a>
+              <h3 class="deck__title">Basic HTML Tags</h3>
+              <div class="deck__row">
+                <p class="deck__count">10 cards</p>
+
+                <button
+                  class="decks__delete-btn"
+                  aria-label="Delete this deck"
+                ></button>
+              </div>
+            </li>
+          </template>
+
+          <li class="deck deck_color_grey">
+            <h3 class="deck__title">+ New Deck</h3>
+            <div class="deck__row"></div>
+          </li>
+        </ul>
+      </section>
+      <section id="not-found" class="hidden">
+        <h2>404 Not Found</h2>
+        <p>The page you are looking for does not exist.</p>
+      </section>
+      <section class="carousel">
+        <h2 class="carousel__title">HTML Tags Deck &middot; 1/10</h2>
+
+        <div class="carousel__content">
+          <button
+            class="carousel__btn carousel__btn_type_left"
+            type="button"
+            aria-label="Previous card"
+          ></button>
+
+          <div class="carousel__card">
+            <p class="carousel__card-text">&lt;body&gt;&lt;/body&gt;</p>
+          </div>
+
+          <button
+            class="carousel__btn carousel__btn_type_right"
+            type="button"
+            aria-label="Next card"
+          ></button>
+        </div>
+
+        <button
+          class="carousel__btn carousel__btn_type_flip"
+          type="button"
+          aria-label="Flip card"
+        ></button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">&copy; 2026 Felix Pasillas</p>
+    </footer>
+    <script type="module" src="./assets/js/index.js"></script>
+  </body>
+</html>
