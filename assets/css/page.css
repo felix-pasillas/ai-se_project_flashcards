@@ -1,15 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.button {
-  font: inherit;
-  border: none;
-  cursor: pointer;
-}
-
 .page {
   background-color: #ececec;
   min-height: 100vh;
@@ -26,6 +14,22 @@
 
 .page__main-content {
   flex-grow: 1;
+}
+
+.page__main-content_location_carousel {
+  margin-top: 40px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.button {
+  font: inherit;
+  border: none;
+  cursor: pointer;
 }
 
 .header {
@@ -235,10 +239,6 @@
 
 .deck_color_grey {
   background-color: #d9d9d9;
-}
-
-.page__main-content_location_carousel {
-  margin-top: 40px;
 }
 
 .carousel {

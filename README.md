@@ -15,3 +15,7 @@ A simple web application built as part of the TripleTen AI-assisted Software Eng
 -JavaScript
 -Git
 -Github
+
+## Deployed Site
+
+Check out [this site] (https://felix-pasillas.github.io/ai-se_project_flashcards) on GitHub Pages.
