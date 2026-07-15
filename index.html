@@ -33,17 +33,25 @@
     </header>
 
     <main class="page__main-content">
-      <section id="home" class="gallery">
-        <h2 class="gallery__title">My Decks</h2>
+      <section id="deck-view" class="gallery">
+        <div class="gallery__header">
+        <h2 class="gallery__title"></h2>
+
+        <button
+           type="button"
+           class="gallery__practice-btn"
+        >
+          Practice
+        </button>
+        </div>
 
         <ul class="gallery__list">
-          <template id="deck-template">
+
+        <ul class="gallery__list">
+          <template id="flashcard-template">
             <li class="card card_color_green">
-              <a class="card__link" href="#"></a>
               <h3 class="card__title">Basic HTML Tags</h3>
               <div class="card__row">
-                <p class="card__count">10 cards</p>
-
                 <button
                   class="gallery__delete-btn"
                   aria-label="Delete this deck"
