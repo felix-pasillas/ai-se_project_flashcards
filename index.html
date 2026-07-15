@@ -33,28 +33,28 @@
     </header>
 
     <main class="page__main-content">
-      <section id="home" class="decks">
-        <h2 class="decks__title">My Decks</h2>
+      <section id="home" class="gallery">
+        <h2 class="gallery__title">My Decks</h2>
 
-        <ul class="decks__list">
+        <ul class="gallery__list">
           <template id="deck-template">
-            <li class="deck deck_color_green">
-              <a class="deck__link" href="#"></a>
-              <h3 class="deck__title">Basic HTML Tags</h3>
-              <div class="deck__row">
-                <p class="deck__count">10 cards</p>
+            <li class="card card_color_green">
+              <a class="card__link" href="#"></a>
+              <h3 class="card__title">Basic HTML Tags</h3>
+              <div class="card__row">
+                <p class="card__count">10 cards</p>
 
                 <button
-                  class="decks__delete-btn"
+                  class="gallery__delete-btn"
                   aria-label="Delete this deck"
                 ></button>
               </div>
             </li>
           </template>
 
-          <li class="deck deck_color_grey">
-            <h3 class="deck__title">+ New Deck</h3>
-            <div class="deck__row"></div>
+          <li class="card card_color_grey">
+            <h3 class="card__title">+ New Deck</h3>
+            <div class="card__row"></div>
           </li>
         </ul>
       </section>

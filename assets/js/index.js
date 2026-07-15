@@ -1,27 +1,27 @@
-import { decks, getDeckByID } from "./decks.js";
+import { decks, getDeckByID } from "./cards.js";
 import { removeColorClasses, hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 
 const deckTemplate = document.getElementById("deck-template").content;
-const deckList = document.querySelector(".decks__list");
+const deckList = document.querySelector(".gallery__list");
 const homeSection = document.getElementById("home");
 const notFoundSection = document.getElementById("not-found");
 
 function createDeckElement(item) {
-  const deckElement = deckTemplate.querySelector(".deck").cloneNode(true);
+  const deckElement = deckTemplate.querySelector(".card").cloneNode(true);
 
-  deckElement.querySelector(".deck__title").textContent = item.name;
-  deckElement.querySelector(".deck__count").textContent =
+  deckElement.querySelector(".card__title").textContent = item.name;
+  deckElement.querySelector(".card__count").textContent =
     `${item.cards.length} cards`;
 
   const colorName = hexToString(item.color);
   removeColorClasses(deckElement);
-  deckElement.classList.add(`deck_color_${colorName}`);
+  deckElement.classList.add(`card_color_${colorName}`);
 
   const currentDeckID = item.id;
-  deckElement.querySelector(".deck__link").href = `#carousel/${currentDeckID}`;
+  deckElement.querySelector(".card__link").href = `#carousel/${currentDeckID}`;
 
-  const deleteButton = deckElement.querySelector(".decks__delete-btn");
+  const deleteButton = deckElement.querySelector(".gallery__delete-btn");
   deleteButton.addEventListener("click", (event) => {
     deckElement.remove();
   });

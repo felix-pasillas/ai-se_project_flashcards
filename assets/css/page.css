@@ -79,7 +79,7 @@
   text-decoration: underline;
 }
 
-.decks {
+.gallery {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -87,7 +87,7 @@
   margin-top: 60px;
 }
 
-.decks__title {
+.gallery__title {
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 40px;
@@ -95,14 +95,14 @@
   line-height: 1.2;
 }
 
-.deck__cards-count {
+.card__cards-count {
   margin: 0;
   position: absolute;
   bottom: 20px;
   left: 20px;
 }
 
-.decks__list {
+.gallery__list {
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -111,19 +111,19 @@
   gap: 20px;
 }
 
-.decks__new-deck-btn {
+.gallery__new-deck-btn {
   padding: 20px 40px;
   display: flex;
   border-radius: 20px;
   cursor: pointer;
 }
 
-.decks__new-deck-btn:hover {
+.gallery__new-deck-btn:hover {
   background-color: #d9d9d9;
   color: #1a1a1a80;
 }
 
-.deck {
+.card {
   width: 325px;
   height: 205px;
   border-radius: 20px;
@@ -138,20 +138,20 @@
   cursor: pointer;
 }
 
-.deck__link {
+.card__link {
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-.deck__title {
+.card__title {
   margin: 0;
   font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
 }
 
-.decks__new-button {
+.gallery__new-button {
   margin-top: 24px;
   width: 240px;
   height: 140px;
@@ -168,11 +168,11 @@
   background-color: #d9d9d9;
 }
 
-.decks__new-button:hover {
+.gallery__new-button:hover {
   opacity: 0.6;
 }
 
-.decks__delete-btn {
+.gallery__delete-btn {
   width: 24px;
   height: 24px;
   background: transparent url(../images/delete.svg) no-repeat center;
@@ -186,17 +186,17 @@
   z-index: 2;
 }
 
-.decks__delete-btn:hover {
+.gallery__delete-btn:hover {
   opacity: 0.6;
 }
 
-.deck__row {
+.card__row {
   justify-content: space-between;
   align-items: center;
   display: flex;
 }
 
-.decks__content {
+.gallery__content {
   display: flex;
   gap: 20px;
 }
@@ -213,31 +213,31 @@
   border-radius: 20px;
 }
 
-.deck_color_green {
+.card_color_green {
   background-color: #64d583;
 }
 
-.deck_color_blue {
+.card_color_blue {
   background-color: #91a8f9;
 }
 
-.deck_color_pink {
+.card_color_pink {
   background-color: #ee92d7;
 }
 
-.deck_color_purple {
+.card_color_purple {
   background-color: #aa8ef0;
 }
 
-.deck_color_orange {
+.card_color_orange {
   background-color: #ee955e;
 }
 
-.deck_color_yellow {
+.card_color_yellow {
   background-color: #f5d770;
 }
 
-.deck_color_grey {
+.card_color_grey {
   background-color: #d9d9d9;
 }
 
@@ -349,7 +349,7 @@
   gap: 20px;
 }
 
-.card {
+.cards__item {
   width: 300px;
   height: 200px;
   padding: 20px;
