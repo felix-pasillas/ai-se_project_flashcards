@@ -12,6 +12,7 @@ const homeSection = document.getElementById("home");
 const deckViewSection = document.getElementById("deck-view");
 const notFoundSection = document.getElementById("not-found");
 const carouselView = document.querySelector(".page__main-content > .carousel");
+const pageElement = document.querySelector(".page");
 
 function clearRenderedCards(listElement) {
   if (!listElement) {
@@ -64,6 +65,12 @@ function renderDecks(item) {
 }
 
 function showView({ showHome, showDeckView, showCarousel, showNotFound }) {
+  if (showCarousel || showNotFound) {
+    pageElement?.classList.add("page_no-mobile-bar");
+  } else {
+    pageElement?.classList.remove("page_no-mobile-bar");
+  }
+
   if (homeSection) {
     homeSection.style.display = showHome ? "block" : "none";
   }

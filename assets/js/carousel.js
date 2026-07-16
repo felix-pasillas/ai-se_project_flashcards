@@ -41,7 +41,7 @@ export function renderCarouselView(deck) {
       <section class="carousel">
         <h2 class="carousel__title">${deck.name} · ${currentCardIndex + 1}/${deck.cards.length}</h2>
 
-        <div class="carousel__content">
+        <div class="carousel__grid">
           <button
             class="carousel__btn carousel__btn_type_left"
             type="button"
@@ -61,13 +61,13 @@ export function renderCarouselView(deck) {
             aria-label="Next card"
             ${isLastCard ? "disabled" : ""}
           ></button>
-        </div>
 
-        <button
-          class="carousel__btn carousel__btn_type_flip"
-          type="button"
-          aria-label="Flip card"
-        ></button>
+          <button
+            class="carousel__btn carousel__btn_type_flip"
+            type="button"
+            aria-label="Flip card"
+          ></button>
+        </div>
       </section>
     `;
 

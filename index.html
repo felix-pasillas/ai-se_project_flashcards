@@ -52,6 +52,13 @@
             </li>
           </template>
         </ul>
+
+        <button
+          class="button gallery__new-deck-btn gallery__new-image-btn"
+          type="button"
+        >
+          + New Deck
+        </button>
       </section>
 
       <section id="deck-view" class="gallery">
@@ -60,11 +67,12 @@
 
           <div class="gallery__actions">
             <button
-              class="gallery__new-button gallery__new-card-btn"
+              class="gallery__new-button gallery__new-card-btn gallery__new-card-btn_location_deck-view"
               type="button"
             >
-              New Card
+              + New Card
             </button>
+
             <a class="button gallery__practice-btn" href="#">Practice</a>
           </div>
         </div>
@@ -85,7 +93,7 @@
       <section class="carousel">
         <h2 class="carousel__title">HTML Tags Deck &middot; 1/10</h2>
 
-        <div class="carousel__content">
+        <div class="carousel__grid">
           <button
             class="carousel__btn carousel__btn_type_left"
             type="button"
@@ -101,13 +109,13 @@
             type="button"
             aria-label="Next card"
           ></button>
-        </div>
 
-        <button
-          class="carousel__btn carousel__btn_type_flip"
-          type="button"
-          aria-label="Flip card"
-        ></button>
+          <button
+            class="carousel__btn carousel__btn_type_flip"
+            type="button"
+            aria-label="Flip card"
+          ></button>
+        </div>
       </section>
     </main>
 
