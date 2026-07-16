@@ -33,25 +33,17 @@
     </header>
 
     <main class="page__main-content">
-      <section id="deck-view" class="gallery">
-        <div class="gallery__header">
-        <h2 class="gallery__title"></h2>
-
-        <button
-           type="button"
-           class="gallery__practice-btn"
-        >
-          Practice
-        </button>
-        </div>
+      <section id="home" class="gallery">
+        <h2 class="gallery__title">My Decks</h2>
 
         <ul class="gallery__list">
-
-        <ul class="gallery__list">
-          <template id="flashcard-template">
+          <template id="deck-template">
             <li class="card card_color_green">
+              <a class="card__link" href="#"></a>
               <h3 class="card__title">Basic HTML Tags</h3>
               <div class="card__row">
+                <p class="card__count">10 cards</p>
+
                 <button
                   class="gallery__delete-btn"
                   aria-label="Delete this deck"
@@ -59,11 +51,31 @@
               </div>
             </li>
           </template>
+        </ul>
+      </section>
 
-          <li class="card card_color_grey">
-            <h3 class="card__title">+ New Deck</h3>
-            <div class="card__row"></div>
-          </li>
+      <section id="deck-view" class="gallery">
+        <div class="gallery__header">
+          <h2 class="gallery__title"></h2>
+
+          <div class="gallery__actions">
+            <button
+              class="gallery__new-button gallery__new-card-btn"
+              type="button"
+            >
+              New Card
+            </button>
+            <a class="button gallery__practice-btn" href="#">Practice</a>
+          </div>
+        </div>
+
+        <ul class="gallery__list">
+          <template id="flashcard-template">
+            <li class="card card_color_green">
+              <h3 class="card__title">What does HTML stand for?</h3>
+              <div class="card__row"></div>
+            </li>
+          </template>
         </ul>
       </section>
       <section id="not-found" class="hidden">

@@ -95,7 +95,29 @@
   line-height: 1.2;
 }
 
-.card__cards-count {
+.gallery__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.gallery__header .gallery__title {
+  margin-bottom: 0;
+}
+
+.gallery__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gallery__practice-btn {
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.card__count {
   margin: 0;
   position: absolute;
   bottom: 20px;
@@ -170,6 +192,23 @@
 
 .gallery__new-button:hover {
   opacity: 0.6;
+}
+
+.gallery__header .gallery__new-button {
+  margin-top: 0;
+  width: auto;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  gap: 8px;
+}
+
+.gallery__new-card-btn::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: url(../images/flip.svg) no-repeat center;
+  background-size: contain;
 }
 
 .gallery__delete-btn {
