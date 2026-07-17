@@ -24,4 +24,4 @@ Check out [this site](https://felix-pasillas.github.io/ai-se_project_flashcards)
 
 ## Project Pitch Video
 
-Check out [this video](ADD_LINK_HERE), where I describe my project.
+Check out [this video](https://drive.google.com/file/d/1RalmFt49O_5K6koU0lsjBIdKW_vEHEcR/view?usp=sharing), where I describe my project.
