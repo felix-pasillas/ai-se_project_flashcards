@@ -36,25 +36,6 @@
     display: none;
   }
 
-  .gallery__new-image-btn {
-    position: fixed;
-    bottom: 48px;
-    left: 20px;
-    right: 20px;
-    margin: 0 auto;
-    z-index: 11;
-    padding: 12px 0 14px;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1;
-    background-color: #000;
-    color: #fff;
-    width: auto;
-    max-width: none;
-    aspect-ratio: auto;
-    border-radius: 8px;
-  }
-
   #deck-view .gallery__actions {
     position: fixed;
     left: 20px;
