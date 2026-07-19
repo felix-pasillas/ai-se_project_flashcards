@@ -32,29 +32,6 @@
   cursor: pointer;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 20px;
-  margin-bottom: 0;
-}
-
-.header__title {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: -0.24px;
-}
-
-.header__link {
-  text-decoration: none;
-  color: #444444;
-  font-weight: 900;
-  font-size: 24px;
-  letter-spacing: -0.24px;
-}
-
 .nav__links {
   display: flex;
   gap: 20px;
@@ -435,18 +412,6 @@
 @media screen and (max-width: 648px) {
   .page {
     padding: 20px 20px 32px;
-  }
-
-  .header {
-    padding-bottom: 42px;
-  }
-
-  .header__title {
-    font-size: 20px;
-  }
-
-  .header__link {
-    font-size: 20px;
   }
 
   .gallery__title {
