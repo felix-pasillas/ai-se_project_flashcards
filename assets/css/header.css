@@ -24,13 +24,22 @@
 @media screen and (max-width: 648px) {
   .header {
     padding-bottom: 42px;
+    flex-wrap: nowrap;
+    gap: 12px;
   }
 
   .header__title {
     font-size: 20px;
+    flex-shrink: 0;
   }
 
   .header__link {
     font-size: 20px;
+    white-space: nowrap;
+  }
+
+  .header > div {
+    margin-left: auto;
+    min-width: 0;
   }
 }

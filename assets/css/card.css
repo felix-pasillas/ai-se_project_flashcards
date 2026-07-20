@@ -1,0 +1,93 @@
+.card__count {
+  margin: 0;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.card {
+  width: 100%;
+  aspect-ratio: 325 / 205;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.card__row {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.card_color_green {
+  background-color: #64d583;
+}
+
+.card_color_blue {
+  background-color: #91a8f9;
+}
+
+.card_color_pink {
+  background-color: #ee92d7;
+}
+
+.card_color_purple {
+  background-color: #aa8ef0;
+}
+
+.card_color_orange {
+  background-color: #ee955e;
+}
+
+.card_color_yellow {
+  background-color: #f5d770;
+}
+
+.card_color_grey {
+  background-color: #d9d9d9;
+}
+
+.card__carousel_color_green {
+  background-color: #64d583;
+}
+
+.card__carousel_color_blue {
+  background-color: #91a8f9;
+}
+
+.card__carousel_color_pink {
+  background-color: #ee92d7;
+}
+
+.card__carousel_color_purple {
+  background-color: #aa8ef0;
+}
+
+.card__carousel_color_orange {
+  background-color: #ee955e;
+}
+
+.card__carousel_color_yellow {
+  background-color: #f5d770;
+}
