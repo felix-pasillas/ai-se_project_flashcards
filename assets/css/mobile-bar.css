@@ -36,6 +36,32 @@
     display: none;
   }
 
+  .gallery__new-image-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 48px;
+    left: 20px;
+    right: 20px;
+    margin: 0 auto;
+    z-index: 11;
+    padding: 12px 0 14px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    background-color: #000;
+    color: #fff;
+    width: auto;
+    max-width: none;
+    aspect-ratio: auto;
+    border-radius: 8px;
+  }
+
+  .gallery__new-deck-card {
+    display: none;
+  }
+
   #deck-view .gallery__actions {
     position: fixed;
     left: 20px;
@@ -87,6 +113,12 @@
     right: 0;
     bottom: 0;
     z-index: 12;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .gallery__new-image-btn {
+    display: none;
   }
 }
 

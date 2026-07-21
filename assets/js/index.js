@@ -64,6 +64,34 @@ function renderDecks(item) {
   homeDeckList.appendChild(deckElement);
 }
 
+function renderNewDeckCard() {
+  if (!homeDeckList || !deckTemplate) {
+    return;
+  }
+
+  const newDeckCardElement = deckTemplate
+    .querySelector(".card")
+    .cloneNode(true);
+  const cardTitleElement = newDeckCardElement.querySelector(".card__title");
+  const cardCountElement = newDeckCardElement.querySelector(".card__count");
+
+  if (cardTitleElement) {
+    cardTitleElement.textContent = "+ New Deck";
+  }
+
+  if (cardCountElement) {
+    cardCountElement.textContent = "";
+  }
+
+  removeColorClasses(newDeckCardElement);
+  newDeckCardElement.classList.add("card_color_grey", "gallery__new-deck-card");
+
+  newDeckCardElement.querySelector(".card__link")?.remove();
+  newDeckCardElement.querySelector(".gallery__delete-btn")?.remove();
+
+  homeDeckList.appendChild(newDeckCardElement);
+}
+
 function showView({ showHome, showDeckView, showCarousel, showNotFound }) {
   if (showCarousel || showNotFound) {
     pageElement?.classList.add("page_no-mobile-bar");
@@ -102,6 +130,7 @@ function renderHomeView() {
 
   clearRenderedCards(homeDeckList);
   decks.forEach(renderDecks);
+  renderNewDeckCard();
 }
 
 function renderNotFoundView() {

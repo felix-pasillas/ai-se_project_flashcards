@@ -98,6 +98,10 @@
   gap: 20px;
 }
 
+.gallery__new-image-btn {
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
   .gallery__header {
     flex-direction: column;
