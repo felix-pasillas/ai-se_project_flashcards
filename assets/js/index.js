@@ -230,7 +230,9 @@ homeSection?.addEventListener("click", (event) => {
     return;
   }
 
-  const newCardButton = target.closest(".gallery__new-card-btn");
+  const newCardButton = target.closest(
+    ".gallery__new-card-btn, .gallery__new-deck-card",
+  );
 
   if (!newCardButton || !homeSection.contains(newCardButton)) {
     return;
