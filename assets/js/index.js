@@ -13,6 +13,7 @@ const deckViewSection = document.getElementById("deck-view");
 const notFoundSection = document.getElementById("not-found");
 const carouselView = document.querySelector(".page__main-content > .carousel");
 const pageElement = document.querySelector(".page");
+const newDeckSection = document.querySelector("#new-deck-view");
 
 function clearRenderedCards(listElement) {
   if (!listElement) {
@@ -92,7 +93,19 @@ function renderNewDeckCard() {
   homeDeckList.appendChild(newDeckCardElement);
 }
 
-function showView({ showHome, showDeckView, showCarousel, showNotFound }) {
+function renderNewDeckView() {
+  if (!newDeckSection) {
+    return;
+  }
+}
+
+function showView({
+  showHome,
+  showDeckView,
+  showCarousel,
+  showNotFound,
+  showNewDeckView,
+}) {
   if (showCarousel || showNotFound) {
     pageElement?.classList.add("page_no-mobile-bar");
   } else {
@@ -113,6 +126,10 @@ function showView({ showHome, showDeckView, showCarousel, showNotFound }) {
 
   if (notFoundSection) {
     notFoundSection.style.display = showNotFound ? "block" : "none";
+  }
+
+  if (newDeckSection) {
+    newDeckSection.style.display = showNewDeckView ? "block" : "none";
   }
 }
 
@@ -150,6 +167,7 @@ function handleRoute() {
   const isHomeView = hash === "#home";
   const isDeckView = hash.startsWith("#deck/");
   const isCarouselView = hash.startsWith("#carousel/");
+  const isNewDeckView = hash === "#new-deck-view";
 
   if (isHomeView) {
     renderHomeView();
@@ -188,6 +206,16 @@ function handleRoute() {
     } else {
       renderNotFoundView();
     }
+  } else if (isNewDeckView) {
+    showView({
+      showHome: false,
+      showDeckView: false,
+      showCarousel: false,
+      showNotFound: false,
+      showNewDeckView: true,
+    });
+
+    renderNewDeckView();
   } else {
     renderNotFoundView();
   }
