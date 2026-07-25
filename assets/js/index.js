@@ -222,4 +222,21 @@ function handleRoute() {
 }
 
 window.addEventListener("hashchange", handleRoute);
+
+homeSection?.addEventListener("click", (event) => {
+  const target = event.target;
+
+  if (!(target instanceof HTMLElement)) {
+    return;
+  }
+
+  const newCardButton = target.closest(".gallery__new-card-btn");
+
+  if (!newCardButton || !homeSection.contains(newCardButton)) {
+    return;
+  }
+
+  window.location.hash = "#new-deck-view";
+});
+
 handleRoute();
