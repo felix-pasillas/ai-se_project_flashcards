@@ -10,12 +10,6 @@
   padding: 20px;
 }
 
-.new-deck-view__form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 .new-deck-view__legend {
   font-size: 14px;
   color: #666;
@@ -34,6 +28,7 @@
 .color-picker {
   display: flex;
   gap: 10px;
+  cursor: pointer;
 }
 
 textarea {
@@ -74,4 +69,48 @@ input[type="text"] {
 
 header {
   margin-bottom: 30px;
+}
+
+.new-deck-view__form {
+  border-radius: 12px;
+  border: 1px solid #1a1a1a;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.new-deck-view__color-input {
+  appearance: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.new-deck-view__color-input:checked {
+  border: 2px solid rgb(0 0 0 / 0.2);
+}
+
+.new-deck-view__color-input_color_green {
+  background-color: #64d583;
+}
+
+.new-deck-view__color-input_color_blue {
+  background-color: #91a8f9;
+}
+
+.new-deck-view__color-input_color_purple {
+  background-color: #aa8ef0;
+}
+
+.new-deck-view__color-input_color_pink {
+  background-color: #ee92d7;
+}
+
+.new-deck-view__color-input_color_orange {
+  background-color: #ee955e;
+}
+
+.new-deck-view__color-input_color_yellow {
+  background-color: #f5d770;
 }
