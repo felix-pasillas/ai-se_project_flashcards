@@ -1,3 +1,5 @@
+import { decks } from "./cards.js";
+
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
 /**
@@ -38,10 +40,35 @@ const submitBtn = document.querySelector(".new-deck-view__submit");
 function handleSubmit(event) {
   event.preventDefault();
 
-  const deckJSON = textarea.value;
+  const formData = new FormData(event.target);
+  const values = Object.fromEntries(formData);
+  const deckJSON = values["deck-json"] || textarea.value;
 
   try {
     const deck = JSON.parse(deckJSON);
+    values.name =
+      typeof values.name === "string" && values.name.trim()
+        ? values.name
+        : typeof deck.name === "string" && deck.name.trim()
+          ? deck.name
+          : "Untitled Deck";
+    const deckCards = Array.isArray(deck.cards)
+      ? deck.cards
+      : Array.isArray(deck)
+        ? deck
+        : [];
+    const uniqueDeckId = `${slugify(values.name)}-${Date.now()}`;
+
+    const newDeck = {
+      id: uniqueDeckId,
+      color: normalizeColor(
+        values.color || values["deck-color-picker"] || deck.color,
+      ),
+      name: values.name,
+      cards: deckCards,
+    };
+
+    decks.push(newDeck);
   } catch (error) {
     console.error("Invalid JSON", error);
   }
