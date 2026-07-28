@@ -11,6 +11,14 @@
   padding: 20px;
 }
 
+.modal {
+  display: none;
+}
+
+.modal_visible {
+  display: flex;
+}
+
 .new-deck-view__container {
   max-width: 600px;
   margin: 0 auto;

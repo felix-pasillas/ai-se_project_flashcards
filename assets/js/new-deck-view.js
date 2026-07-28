@@ -40,6 +40,11 @@ const submitBtn = document.querySelector(".new-deck-view__submit");
 const errorModal = document.querySelector("#error-modal");
 const errorCloseBtn = document.querySelector(".modal__close");
 const errorMessage = document.querySelector(".modal__error");
+
+function showError(message) {
+  errorMessage.textContent = message;
+  errorModal.classList.add("modal_visible");
+}
 errorCloseBtn.addEventListener("click", () => {
   errorModal.classList.remove("modal_visible");
 });
