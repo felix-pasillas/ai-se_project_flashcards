@@ -37,6 +37,13 @@ const form = document.querySelector(".new-deck-view__form");
 const textarea = document.querySelector(".new-deck-view__textarea");
 const submitBtn = document.querySelector(".new-deck-view__submit");
 
+const errorModal = document.querySelector("#error-modal");
+const errorCloseBtn = document.querySelector(".modal__close");
+const errorMessage = document.querySelector(".modal__error");
+errorCloseBtn.addEventListener("click", () => {
+  errorModal.classList.remove("modal_visible");
+});
+
 function handleSubmit(event) {
   event.preventDefault();
 
