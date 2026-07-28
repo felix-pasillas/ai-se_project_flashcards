@@ -1,4 +1,4 @@
-const decks = [
+const DEFAULT_DECKS = [
   {
     id: "html-basics",
     name: "HTML Basics",
@@ -758,6 +758,9 @@ const decks = [
     color: "#f5d770",
   },
 ];
+
+const decks =
+  JSON.parse(localStorage.getItem("decks") || "null") || DEFAULT_DECKS;
 
 /**
  * Retrieves a deck object by its ID from the decks array.

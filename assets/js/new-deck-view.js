@@ -45,6 +45,7 @@ function handleSubmit(event) {
   const deckJSON = values["deck-json"] || textarea.value;
 
   try {
+    console.log(deckJSON);
     const deck = JSON.parse(deckJSON);
     values.name =
       typeof values.name === "string" && values.name.trim()
@@ -69,6 +70,12 @@ function handleSubmit(event) {
     };
 
     decks.push(newDeck);
+    localStorage.setItem("decks", JSON.stringify(decks));
+    if (window.location.hash === "#home") {
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    } else {
+      window.location.hash = "#home";
+    }
   } catch (error) {
     console.error("Invalid JSON", error);
   }
