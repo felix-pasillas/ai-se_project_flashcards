@@ -80,6 +80,14 @@ function handleSubmit(event) {
       return;
     }
 
+    if (
+      typeof deck.color == "string" &&
+      deck.color.toLowerCase() !== values.color.toLowerCase()
+    ) {
+      showError("The JSON color does not match the selected color.");
+      return;
+    }
+
     const name = validateName(deck.name);
 
     if (!name) {
