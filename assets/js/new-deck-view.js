@@ -49,6 +49,21 @@ errorCloseBtn.addEventListener("click", () => {
   errorModal.classList.remove("modal_visible");
 });
 
+function validateName(name) {
+  if (typeof name != "string" || name.length < 2 || name.length > 80) {
+    return null;
+  }
+  return name;
+}
+
+function parseJSON(jsonString) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    return null;
+  }
+}
+
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -58,7 +73,25 @@ function handleSubmit(event) {
 
   try {
     console.log(deckJSON);
-    const deck = JSON.parse(deckJSON);
+    const deck = parseJSON(deckJSON);
+
+    if (!deck) {
+      showError("Invalid JSON.");
+      return;
+    }
+
+    const name = validateName(deck.name);
+
+    if (!name) {
+      showError("The deck name must be between 2 and 80 characters.");
+      return;
+    }
+
+    if (!Array.isArray(deck.cards)) {
+      showError("The deck must contain a cards array.");
+      return;
+    }
+
     values.name =
       typeof values.name === "string" && values.name.trim()
         ? values.name
