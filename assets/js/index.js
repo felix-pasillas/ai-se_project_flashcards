@@ -1,9 +1,9 @@
+import { getDecks } from "./api.js";
 import { decks, getDeckByID } from "./cards.js";
 import { removeColorClasses, hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
 import { slugify, normalizeColor, disableSubmitBtn } from "./new-deck-view.js";
-import { getDecks } from "./api.js";
 
 let currentDeck = null;
 
@@ -137,7 +137,7 @@ function showView({
   }
 }
 
-function renderHomeView() {
+function renderHomeView(decks) {
   if (!homeDeckList) {
     return;
   }
@@ -167,6 +167,7 @@ function renderNotFoundView() {
 }
 
 function handleRoute() {
+  console.log("handleRoute", window.location.hash);
   const hash = window.location.hash || "#home";
   const isHomeView = hash === "#home";
   const isDeckView = hash.startsWith("#deck/");
@@ -174,12 +175,13 @@ function handleRoute() {
   const isNewDeckView = hash === "#new-deck-view";
 
   if (isHomeView) {
-    renderHomeView();
+    renderHomeView(decks);
   } else if (isDeckView) {
     const deckId = hash.split("/")[1];
     const deck = getDeckByID(deckId);
 
     if (!deck) {
+      console.log("Rendering 404. hash =", hash);
       renderNotFoundView();
       return;
     }
@@ -245,4 +247,7 @@ homeSection?.addEventListener("click", (event) => {
   window.location.hash = "#new-deck-view";
 });
 
-handleRoute();
+document.addEventListener("DOMContentLoaded", async () => {
+  const decks = await getDecks();
+  handleRoute();
+});
