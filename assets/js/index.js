@@ -3,6 +3,7 @@ import { removeColorClasses, hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
 import { slugify, normalizeColor, disableSubmitBtn } from "./new-deck-view.js";
+import { getDecks } from "./api.js";
 
 let currentDeck = null;
 
