@@ -1,4 +1,5 @@
 import { decks } from "./cards.js";
+import { addDeck } from "./api.js";
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
@@ -114,7 +115,6 @@ function handleSubmit(event) {
     const uniqueDeckId = `${slugify(values.name)}-${Date.now()}`;
 
     const newDeck = {
-      id: uniqueDeckId,
       color: normalizeColor(
         values.color || values["deck-color-picker"] || deck.color,
       ),
