@@ -1,5 +1,5 @@
 import { getDecks } from "./api.js";
-import { decks, getDeckByID } from "./cards.js";
+import { decks, fetchedDecks, getDeckByID } from "./cards.js";
 import { removeColorClasses, hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
@@ -247,7 +247,16 @@ homeSection?.addEventListener("click", (event) => {
   window.location.hash = "#new-deck-view";
 });
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const decks = await getDecks();
-  handleRoute();
+document.addEventListener("DOMContentLoaded", () => {
+  getDecks()
+    .then((decks) => {
+      fetchedDecks.push(...decks);
+      decks.forEach(renderDecks);
+    })
+    .catch((error) => {
+      showError(error);
+    })
+    .finally(() => {
+      handleRoute();
+    });
 });

@@ -758,6 +758,7 @@ const DEFAULT_DECKS = [
     color: "#f5d770",
   },
 ];
+const fetchedDecks = [];
 
 const decks =
   JSON.parse(localStorage.getItem("decks") || "null") || DEFAULT_DECKS;
@@ -769,7 +770,10 @@ const decks =
  * @returns {object|undefined} The deck object if found, undefined otherwise
  */
 function getDeckByID(deckId) {
-  return decks.find((deck) => deck.id === deckId);
+  return (
+    fetchedDecks.find((deck) => `${deck._id ?? deck.id}` === deckId) ||
+    decks.find((deck) => `${deck.id ?? deck._id}` === deckId)
+  );
 }
 
-export { decks, getDeckByID };
+export { decks, fetchedDecks, getDeckByID };
