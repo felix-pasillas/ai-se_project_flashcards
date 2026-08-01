@@ -1,4 +1,4 @@
-import { getDecks } from "./api.js";
+import { getDecks, deleteDeck } from "./api.js";
 import { decks, fetchedDecks, getDeckByID } from "./cards.js";
 import { removeColorClasses, hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
@@ -48,10 +48,25 @@ function createDeckElement(item) {
   deleteButton?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    deckElement.remove();
+
+    deleteDeck(item._id)
+      .then(() => {
+        deckElement.remove();
+        removeDeckById(item._id);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   });
 
   return deckElement;
+}
+
+function removeDeckById(deckId) {
+  const index = fetchedDecks.findIndex((deck) => deck._id === deckId);
+  if (index !== -1) {
+    fetchedDecks.splice(index, 1);
+  }
 }
 
 function renderDecks(item) {
