@@ -16,6 +16,7 @@ const notFoundSection = document.getElementById("not-found");
 const carouselView = document.querySelector(".page__main-content > .carousel");
 const pageElement = document.querySelector(".page");
 const newDeckSection = document.querySelector("#new-deck-view");
+const aboutSection = document.querySelector("#about");
 
 function clearRenderedCards(listElement) {
   if (!listElement) {
@@ -124,6 +125,7 @@ function showView({
   showCarousel,
   showNotFound,
   showNewDeckView,
+  showAbout,
 }) {
   if (showCarousel || showNotFound) {
     pageElement?.classList.add("page_no-mobile-bar");
@@ -149,6 +151,9 @@ function showView({
 
   if (newDeckSection) {
     newDeckSection.style.display = showNewDeckView ? "block" : "none";
+  }
+  if (aboutSection) {
+    aboutSection.style.display = showAbout ? "block" : "none";
   }
 }
 
@@ -188,6 +193,7 @@ function handleRoute() {
   const isDeckView = hash.startsWith("#deck/");
   const isCarouselView = hash.startsWith("#carousel/");
   const isNewDeckView = hash === "#new-deck-view";
+  const isAboutView = hash === "#about";
 
   if (isHomeView) {
     renderHomeView(decks);
