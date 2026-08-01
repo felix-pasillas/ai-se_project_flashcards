@@ -9,14 +9,27 @@ A simple web application built as part of the TripleTen AI-assisted Software Eng
 - Easy-to-use interface
 - Open Deck View
 - Carousel/Practice View
+- Create and manage custom decks
+- Data is stored and retrieved through a remote API
+- Error handling using modal pop-up messages
 
 ## Technologies Used
 
 - HTML
 - CSS
 - JavaScript
+- Fetch API
+- Remote REST API
+- JSDoc
 - Git
 - Github
+
+## Recent Updates
+
+- Added support for creating and managing study decks.
+- Connected the application to a remote API for storing and retrieving decks and flashcards.
+- Implemented modal dialogs to display user-friendly error messages whenever an API request fails.
+- Added comprehensive JDocs documents for JavaScript functions to improve code readability and maintainability.
 
 ## Deployed Site
 
