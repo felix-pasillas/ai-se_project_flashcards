@@ -43,30 +43,51 @@ function createDeckElement(item) {
   removeColorClasses(deckElement);
   deckElement.classList.add(`card_color_${colorName}`);
 
-  deckElement.querySelector(".card__link").href = `#deck/${item.id}`;
+  deckElement.querySelector(".card__link").href =
+    `#deck/${item.id ?? item._id}`;
 
   const deleteButton = deckElement.querySelector(".gallery__delete-btn");
   deleteButton?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
 
-    deleteDeck(item._id)
-      .then(() => {
-        deckElement.remove();
-        removeDeckById(item._id);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const deckId = item._id ?? item.id;
+
+    if (item._id) {
+      // Deck exists on the server - delete remotely first.
+      deleteDeck(item._id)
+        .then(() => {
+          deckElement.remove();
+          removeDeckFromState(deckId);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      // Local-only deck (e.g. a default deck) - nothing to delete
+      // remotely, just remove it from local state.
+      deckElement.remove();
+      removeDeckFromState(deckId);
+    }
   });
 
   return deckElement;
 }
 
-function removeDeckById(deckId) {
-  const index = fetchedDecks.findIndex((deck) => deck._id === deckId);
-  if (index !== -1) {
-    fetchedDecks.splice(index, 1);
+function removeDeckFromState(deckId) {
+  const fetchedIndex = fetchedDecks.findIndex(
+    (deck) => `${deck._id ?? deck.id}` === `${deckId}`,
+  );
+  if (fetchedIndex !== -1) {
+    fetchedDecks.splice(fetchedIndex, 1);
+  }
+
+  const localIndex = decks.findIndex(
+    (deck) => `${deck._id ?? deck.id}` === `${deckId}`,
+  );
+  if (localIndex !== -1) {
+    decks.splice(localIndex, 1);
+    localStorage.setItem("decks", JSON.stringify(decks));
   }
 }
 

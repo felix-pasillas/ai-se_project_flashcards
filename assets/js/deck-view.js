@@ -40,7 +40,7 @@ function renderDeckView(deck) {
   deckViewTitle.textContent = deck.name;
 
   if (practiceButton) {
-    practiceButton.href = `#carousel/${deck.id}`;
+    practiceButton.href = `#carousel/${deck.id ?? deck._id}`;
   }
 
   clearDeckViewCards();

@@ -73,7 +73,6 @@ function handleSubmit(event) {
   const deckJSON = values["deck-json"] || textarea.value;
 
   try {
-    console.log(deckJSON);
     const deck = parseJSON(deckJSON);
 
     if (!deck) {
@@ -113,24 +112,43 @@ function handleSubmit(event) {
         ? deck
         : [];
     const uniqueDeckId = `${slugify(values.name)}-${Date.now()}`;
+    const color = normalizeColor(
+      values.color || values["deck-color-picker"] || deck.color,
+    );
 
-    const newDeck = {
-      color: normalizeColor(
-        values.color || values["deck-color-picker"] || deck.color,
-      ),
-      name: values.name,
-      cards: deckCards,
-    };
+    submitBtn.disabled = true;
 
-    decks.push(newDeck);
-    localStorage.setItem("decks", JSON.stringify(decks));
-    if (window.location.hash === "#home") {
-      window.dispatchEvent(new HashChangeEvent("hashchange"));
-    } else {
-      window.location.hash = "#home";
-    }
+    addDeck(values.name, color, deckCards)
+      .then((savedDeck) => {
+        // Merge the server response with a guaranteed local id/color/name
+        // fallback, in case the API response shape differs slightly.
+        const newDeck = {
+          id: uniqueDeckId,
+          ...savedDeck,
+          color: savedDeck.color || color,
+          name: savedDeck.name || values.name,
+          cards: savedDeck.cards || deckCards,
+        };
+
+        decks.push(newDeck);
+        localStorage.setItem("decks", JSON.stringify(decks));
+
+        if (window.location.hash === "#home") {
+          window.dispatchEvent(new HashChangeEvent("hashchange"));
+        } else {
+          window.location.hash = "#home";
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        showError("Could not save the deck. Please try again.");
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+      });
   } catch (error) {
     console.error("Invalid JSON", error);
+    showError("Something went wrong while creating the deck.");
   }
 }
 
