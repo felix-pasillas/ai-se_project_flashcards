@@ -54,7 +54,6 @@ function createDeckElement(item) {
     const deckId = item._id ?? item.id;
 
     if (item._id) {
-      // Deck exists on the server - delete remotely first.
       deleteDeck(item._id)
         .then(() => {
           deckElement.remove();
@@ -64,8 +63,6 @@ function createDeckElement(item) {
           console.error(error);
         });
     } else {
-      // Local-only deck (e.g. a default deck) - nothing to delete
-      // remotely, just remove it from local state.
       deckElement.remove();
       removeDeckFromState(deckId);
     }

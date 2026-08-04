@@ -120,8 +120,6 @@ function handleSubmit(event) {
 
     addDeck(values.name, color, deckCards)
       .then((savedDeck) => {
-        // Merge the server response with a guaranteed local id/color/name
-        // fallback, in case the API response shape differs slightly.
         const newDeck = {
           id: uniqueDeckId,
           ...savedDeck,
