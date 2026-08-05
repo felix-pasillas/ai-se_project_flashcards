@@ -185,6 +185,7 @@ function renderHomeView(decks) {
     showDeckView: false,
     showCarousel: false,
     showNotFound: false,
+    showAbout: false,
   });
 
   clearRenderedCards(homeDeckList);
@@ -198,6 +199,7 @@ function renderNotFoundView() {
     showDeckView: false,
     showCarousel: false,
     showNotFound: true,
+    showAbout: false,
   });
 
   clearRenderedCards(homeDeckList);
@@ -232,6 +234,7 @@ function handleRoute() {
       showDeckView: true,
       showCarousel: false,
       showNotFound: false,
+      showAbout: false,
     });
 
     renderDeckView(deck);
@@ -245,6 +248,7 @@ function handleRoute() {
         showDeckView: false,
         showCarousel: true,
         showNotFound: false,
+        showAbout: false,
       });
 
       renderCarouselView(deck);
@@ -258,9 +262,18 @@ function handleRoute() {
       showCarousel: false,
       showNotFound: false,
       showNewDeckView: true,
+      showAbout: false,
     });
 
     renderNewDeckView();
+  } else if (isAboutView) {
+    showView({
+      showHome: false,
+      showDeckView: false,
+      showCarousel: false,
+      showNotFound: false,
+      showAbout: true,
+    });
   } else {
     renderNotFoundView();
   }
