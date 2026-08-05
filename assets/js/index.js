@@ -18,6 +18,11 @@ const pageElement = document.querySelector(".page");
 const newDeckSection = document.querySelector("#new-deck-view");
 const aboutSection = document.querySelector("#about");
 
+/**
+ * Removes all rendered deck card elements from the provided list container.
+ * This mutates the DOM by deleting every descendant matching the .card selector.
+ * @param {Element | null} listElement
+ */
 function clearRenderedCards(listElement) {
   if (!listElement) {
     return;
@@ -28,6 +33,12 @@ function clearRenderedCards(listElement) {
   });
 }
 
+/**
+ * Builds a deck card element from template data and wires up delete behavior.
+ * The function mutates the cloned DOM node, attaches a click handler, and may trigger an API delete when the delete button is used.
+ * @param {{ name: string, cards: object[], color: string, id?: string | number, _id?: string }} item
+ * @returns {HTMLElement | null}
+ */
 function createDeckElement(item) {
   if (!deckTemplate) {
     return null;
@@ -71,6 +82,11 @@ function createDeckElement(item) {
   return deckElement;
 }
 
+/**
+ * Removes a deck entry from in-memory collections and persists local deck changes.
+ * This mutates fetchedDecks and decks, and writes updated decks to localStorage when a local deck is removed.
+ * @param {string | number} deckId
+ */
 function removeDeckFromState(deckId) {
   const fetchedIndex = fetchedDecks.findIndex(
     (deck) => `${deck._id ?? deck.id}` === `${deckId}`,
@@ -88,6 +104,11 @@ function removeDeckFromState(deckId) {
   }
 }
 
+/**
+ * Creates and appends a single deck card to the home gallery list.
+ * This mutates the DOM by adding a rendered deck element when a valid template clone is available.
+ * @param {{ name: string, cards: object[], color: string, id?: string | number, _id?: string }} item
+ */
 function renderDecks(item) {
   if (!homeDeckList) {
     return;
@@ -101,6 +122,10 @@ function renderDecks(item) {
   homeDeckList.appendChild(deckElement);
 }
 
+/**
+ * Renders the special New Deck card in the home gallery.
+ * This mutates the cloned template DOM by replacing text, removing controls, applying classes, and appending the card to the home list.
+ */
 function renderNewDeckCard() {
   if (!homeDeckList || !deckTemplate) {
     return;
@@ -129,6 +154,10 @@ function renderNewDeckCard() {
   homeDeckList.appendChild(newDeckCardElement);
 }
 
+/**
+ * Prepares the new-deck screen state when that route is shown.
+ * This triggers submit-button state updates for the new deck form.
+ */
 function renderNewDeckView() {
   if (!newDeckSection) {
     return;
@@ -137,6 +166,17 @@ function renderNewDeckView() {
   disableSubmitBtn();
 }
 
+/**
+ * Toggles top-level sections so only the requested view is visible.
+ * This mutates DOM display styles and page classes to control layout and mobile-bar behavior.
+ * @param {object} options
+ * @param {boolean} options.showHome
+ * @param {boolean} options.showDeckView
+ * @param {boolean} options.showCarousel
+ * @param {boolean} options.showNotFound
+ * @param {boolean} [options.showNewDeckView]
+ * @param {boolean} options.showAbout
+ */
 function showView({
   showHome,
   showDeckView,
@@ -175,6 +215,11 @@ function showView({
   }
 }
 
+/**
+ * Switches to the home view and renders the provided deck collection.
+ * This updates view visibility and mutates the home gallery DOM by clearing existing cards and appending deck cards plus the New Deck card.
+ * @param {Array<{ name: string, cards: object[], color: string, id?: string | number, _id?: string }>} decks
+ */
 function renderHomeView(decks) {
   if (!homeDeckList) {
     return;
@@ -193,6 +238,10 @@ function renderHomeView(decks) {
   renderNewDeckCard();
 }
 
+/**
+ * Displays the not-found route state and clears previously rendered cards.
+ * This mutates section visibility and removes card nodes from both home and deck-view lists.
+ */
 function renderNotFoundView() {
   showView({
     showHome: false,
@@ -206,6 +255,10 @@ function renderNotFoundView() {
   clearRenderedCards(deckViewList);
 }
 
+/**
+ * Resolves the current hash route and renders the corresponding page view.
+ * Depending on route state, this updates currentDeck, toggles visible sections, and may trigger deck/carousel rendering or a not-found view.
+ */
 function handleRoute() {
   console.log("handleRoute", window.location.hash);
   const hash = window.location.hash || "#home";

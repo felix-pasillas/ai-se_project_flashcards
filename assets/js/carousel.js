@@ -1,5 +1,10 @@
 import { hexToString } from "./colors.js";
 
+/**
+ * Renders the carousel practice view for a deck and initializes navigation state.
+ * This mutates the DOM by building carousel markup, updating card text, and attaching click handlers for previous, next, and flip controls.
+ * @param {{ name: string, color: string, cards: Array<{ question: string, answer: string }> }} [deck]
+ */
 export function renderCarouselView(deck) {
   const mainContent = document.querySelector(".page__main-content");
 
@@ -23,6 +28,10 @@ export function renderCarouselView(deck) {
   let currentCardIndex = 0;
   let showingQuestion = true;
 
+  /**
+   * Rebuilds the visible carousel card for the current index and side, then reattaches button handlers.
+   * This mutates carouselView content and updates interaction wiring each time the card state changes.
+   */
   const updateDisplay = () => {
     const currentCard = deck.cards[currentCardIndex];
 

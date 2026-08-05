@@ -42,6 +42,11 @@ const errorModal = document.querySelector("#error-modal");
 const errorCloseBtn = document.querySelector(".modal__close");
 const errorMessage = document.querySelector(".modal__error");
 
+/**
+ * Displays an error modal with the provided message.
+ * This mutates modal DOM state by updating the error text and adding the visible class.
+ * @param {string} message
+ */
 function showError(message) {
   errorMessage.textContent = message;
   errorModal.classList.add("modal_visible");
@@ -50,6 +55,12 @@ errorCloseBtn.addEventListener("click", () => {
   errorModal.classList.remove("modal_visible");
 });
 
+/**
+ * Validates deck name input and only accepts strings between 2 and 80 characters.
+ * Returns null when the input is missing, not a string, or outside the allowed length bounds.
+ * @param {unknown} name
+ * @returns {string | null}
+ */
 function validateName(name) {
   if (typeof name != "string" || name.length < 2 || name.length > 80) {
     return null;
@@ -57,6 +68,12 @@ function validateName(name) {
   return name;
 }
 
+/**
+ * Attempts to parse a JSON payload and returns the parsed value.
+ * If parsing fails, it returns null instead of throwing.
+ * @param {string} jsonString
+ * @returns {*| null}
+ */
 function parseJSON(jsonString) {
   try {
     return JSON.parse(jsonString);
@@ -65,6 +82,11 @@ function parseJSON(jsonString) {
   }
 }
 
+/**
+ * Handles new deck form submission by parsing JSON input, validating fields, and saving the deck.
+ * This prevents default form submission, may call the addDeck API, updates in-memory and localStorage deck data, mutates UI state, and navigates to the home route.
+ * @param {SubmitEvent} event
+ */
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -152,6 +174,10 @@ function handleSubmit(event) {
 
 form.addEventListener("submit", handleSubmit);
 
+/**
+ * Re-enables the submit button for the new deck form.
+ * This mutates button state in the DOM.
+ */
 function disableSubmitBtn() {
   submitBtn.disabled = false;
 }
