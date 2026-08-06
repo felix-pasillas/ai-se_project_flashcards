@@ -3,7 +3,12 @@ import { decks, fetchedDecks, getDeckByID } from "./cards.js";
 import { removeColorClasses, hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
-import { slugify, normalizeColor, disableSubmitBtn } from "./new-deck-view.js";
+import {
+  slugify,
+  normalizeColor,
+  disableSubmitBtn,
+  showError,
+} from "./new-deck-view.js";
 
 let currentDeck = null;
 

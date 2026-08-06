@@ -182,4 +182,4 @@ function disableSubmitBtn() {
   submitBtn.disabled = false;
 }
 
-export { slugify, normalizeColor, disableSubmitBtn };
+export { slugify, normalizeColor, disableSubmitBtn, showError };

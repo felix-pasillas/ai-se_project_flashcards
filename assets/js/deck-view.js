@@ -36,9 +36,19 @@ function createFlashcardElement(card, colorName) {
     .querySelector(".card")
     .cloneNode(true);
 
-  flashcardElement.querySelector(".card__title").textContent = card.question;
+  const titleElement = flashcardElement.querySelector(".card__title");
+  titleElement.textContent = card.question;
+
   removeColorClasses(flashcardElement);
   flashcardElement.classList.add(`card_color_${colorName}`);
+
+  let showingQuestion = true;
+
+  flashcardElement.addEventListener("click", () => {
+    showingQuestion = !showingQuestion;
+    titleElement.textContent = showingQuestion ? card.question : card.answer;
+    flashcardElement.classList.toggle("card_color_white", !showingQuestion);
+  });
 
   return flashcardElement;
 }
