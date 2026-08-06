@@ -62,14 +62,26 @@
       </section>
 
       <section id="about" class="about" hidden>
-        <h2>About</h2>
-        <p>This application demonstrates fetching and displaying flashcards.</p>
-        <pre class="about__pre">
-      <code>{
-        "topic": "JavaScript",
-        "cards": 10
-      }</code>
-        </pre>
+        <h2>About the Flash Cards App</h2>
+        <p>
+          In this Flash Cards App, you can create your decks of cards to
+          memorize study materials and practice them. It's a student project for
+          the TripleTen AI-Assisted Software Engineering course.
+        </p>
+        <p>
+          When creating a deck of cards, you have to paste/type JSON following
+          this schema:
+        </p>
+        <pre class="about__pre"><code>{
+         "name": "Name",
+         "cards": [
+           {
+             "question": "Question?",
+             "answer": "Answer"
+           },
+           ...
+           ]
+      }</code></pre>
       </section>
 
       <section id="deck-view" class="gallery">
