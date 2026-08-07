@@ -60,7 +60,7 @@ function createDeckElement(item) {
   deckElement.classList.add(`card_color_${colorName}`);
 
   deckElement.querySelector(".card__link").href =
-    `#deck/${item.id ?? item._id}`;
+    `#deck/${item._id ?? item.id}`;
 
   const deleteButton = deckElement.querySelector(".gallery__delete-btn");
   deleteButton?.addEventListener("click", (event) => {
