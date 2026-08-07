@@ -140,7 +140,7 @@ function handleSubmit(event) {
 
     submitBtn.disabled = true;
 
-    addDeck(values.name, color, deckCards)
+    addDeck({ name: values.name, color, cards: deckCards })
       .then((savedDeck) => {
         const newDeck = {
           id: uniqueDeckId,

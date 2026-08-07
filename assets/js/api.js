@@ -43,12 +43,13 @@ function deleteDeck(id) {
 /**
  * Creates a new deck on the remote API with name, color, and cards.
  * This performs an HTTP POST request with a JSON body and returns the created deck payload.
- * @param {string} name
- * @param {string} color
- * @param {object[]} cards
+ * @param {object} deck
+ * @param {string} deck.name
+ * @param {string} deck.color
+ * @param {object[]} deck.cards
  * @returns {Promise<object>}
  */
-function addDeck(name, color, cards) {
+function addDeck({ name, color, cards }) {
   return fetch(`${baseUrl}/decks`, {
     method: "POST",
     headers,
