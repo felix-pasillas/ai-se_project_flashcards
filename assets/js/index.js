@@ -1,5 +1,5 @@
 import { getDecks, deleteDeck } from "./api.js";
-import { decks, fetchedDecks, getDeckByID } from "./cards.js";
+import { fetchedDecks, getDeckByID } from "./cards.js";
 import { removeColorClasses, hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
@@ -88,24 +88,16 @@ function createDeckElement(item) {
 }
 
 /**
- * Removes a deck entry from in-memory collections and persists local deck changes.
- * This mutates fetchedDecks and decks, and writes updated decks to localStorage when a local deck is removed.
+ * Removes a deck entry from the fetched decks collection by its id or _id.
+ * This mutates fetchedDecks in place.
  * @param {string | number} deckId
  */
 function removeDeckFromState(deckId) {
-  const fetchedIndex = fetchedDecks.findIndex(
+  const index = fetchedDecks.findIndex(
     (deck) => `${deck._id ?? deck.id}` === `${deckId}`,
   );
-  if (fetchedIndex !== -1) {
-    fetchedDecks.splice(fetchedIndex, 1);
-  }
-
-  const localIndex = decks.findIndex(
-    (deck) => `${deck._id ?? deck.id}` === `${deckId}`,
-  );
-  if (localIndex !== -1) {
-    decks.splice(localIndex, 1);
-    localStorage.setItem("decks", JSON.stringify(decks));
+  if (index !== -1) {
+    fetchedDecks.splice(index, 1);
   }
 }
 
@@ -223,9 +215,9 @@ function showView({
 /**
  * Switches to the home view and renders the provided deck collection.
  * This updates view visibility and mutates the home gallery DOM by clearing existing cards and appending deck cards plus the New Deck card.
- * @param {Array<{ name: string, cards: object[], color: string, id?: string | number, _id?: string }>} decks
+ * @param {Array<{ name: string, cards: object[], color: string, id?: string | number, _id?: string }>} deckList
  */
-function renderHomeView(decks) {
+function renderHomeView(deckList) {
   if (!homeDeckList) {
     return;
   }
@@ -239,7 +231,7 @@ function renderHomeView(decks) {
   });
 
   clearRenderedCards(homeDeckList);
-  decks.forEach(renderDecks);
+  deckList.forEach(renderDecks);
   renderNewDeckCard();
 }
 
@@ -274,7 +266,7 @@ function handleRoute() {
   const isAboutView = hash === "#about";
 
   if (isHomeView) {
-    renderHomeView(decks);
+    renderHomeView(fetchedDecks);
   } else if (isDeckView) {
     const deckId = hash.split("/")[1];
     const deck = getDeckByID(deckId);
@@ -359,9 +351,8 @@ homeSection?.addEventListener("click", (event) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   getDecks()
-    .then((decks) => {
-      fetchedDecks.push(...decks);
-      decks.forEach(renderDecks);
+    .then((apiDecks) => {
+      fetchedDecks.push(...apiDecks);
     })
     .catch((error) => {
       showError(error);

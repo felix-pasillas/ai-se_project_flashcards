@@ -1,4 +1,4 @@
-import { decks } from "./cards.js";
+import { fetchedDecks } from "./cards.js";
 import { addDeck } from "./api.js";
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
@@ -84,7 +84,7 @@ function parseJSON(jsonString) {
 
 /**
  * Handles new deck form submission by parsing JSON input, validating fields, and saving the deck.
- * This prevents default form submission, may call the addDeck API, updates in-memory and localStorage deck data, mutates UI state, and navigates to the home route.
+ * This prevents default form submission, may call the addDeck API, updates in-memory deck data, mutates UI state, and navigates to the home route.
  * @param {SubmitEvent} event
  */
 function handleSubmit(event) {
@@ -150,8 +150,7 @@ function handleSubmit(event) {
           cards: savedDeck.cards || deckCards,
         };
 
-        decks.push(newDeck);
-        localStorage.setItem("decks", JSON.stringify(decks));
+        fetchedDecks.push(newDeck);
 
         if (window.location.hash === "#home") {
           window.dispatchEvent(new HashChangeEvent("hashchange"));
@@ -159,6 +158,7 @@ function handleSubmit(event) {
           window.location.hash = "#home";
         }
       })
+
       .catch((error) => {
         console.error(error);
         showError("Could not save the deck. Please try again.");
